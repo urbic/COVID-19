@@ -1,0 +1,155 @@
+\documentclass[a4paper,11pt,draft]{article}
+\usepackage{luatex85}
+\usepackage[russian]{hyperref}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage[fleqn,reqno]{amsmath}
+\usepackage{amsthm}
+%\usepackage[math-style=ISO,bold-style=upright,vargreek-shape=unicode,partial=italic]{unicode-math}
+\usepackage[math-style=ISO,bold-style=upright,partial=italic]{unicode-math}
+\usepackage{microtype}
+\usepackage[width=14.85cm]{geometry}
+
+\setmainlanguage{russian}
+\setmainfont{Cambria}
+\setmathfont{Cambria Math}[sans-style=literal]
+\setmathfont{XITS Math}[range={\mathscr,\perp,\leqslant,\geqslant}]
+
+\makeatletter
+
+\newcommand\eqtag[1]{\refstepcounter{equation}\tag{\theequation}\label{#1}}
+
+%\newcommand\slashfrac[2]{{#1\fracslash#2}}
+\newcommand\slashfrac[2]{{#1/#2}}
+
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{theorem*}{Теорема}
+\newtheorem{lem}{Лемма}
+\newtheorem*{lem*}{Лемма}
+\newtheorem{example}{Пример}
+
+\title{Силы реакций идеальных связей в~твёрдом теле являются внутренними}
+\author{А.~Н.~Швец}
+
+\AtBeginDocument{\hypersetup{pdftitle=\@title}}{}
+
+\begin{document}
+
+\maketitle
+
+Твёрдым телом назовём систему материальных точек, попарные расстояния между
+которыми постоянны. Твёрдое тело можно рассматривать как систему с~голономными
+связями с~уравнениями
+	\[
+	(\mbfr_\alpha-\mbfr_\beta)^2-c_{\alpha\beta}^2=0,
+	\quad
+	\alpha,\beta=1,\ldots,N,
+	\eqtag{eq:1}
+	\]
+где $\mbfr_\nu$~— радиусы"=векторы точек, $N$~— количество точек,
+$c_{\alpha\beta}$~— константы.
+
+Согласно принципу освобождения от связей твёрдое тело можно также рассматривать
+как систему свободных материальных точек под действием дополнительных (помимо
+заданных) сил реакции $\mbfR_\nu$.
+
+В~динамике к~определению твёрдого тела добавляют требование, чтобы силы реакции
+были внутренними, то~есть допускали представление в~виде
+	\[
+	\mbfR_\nu=\sum_\kappa\lambda_{\nu\kappa}(\mbfr_\nu-\mbfr_\kappa),
+	\quad
+	\lambda_{\nu\kappa}=\lambda_{\kappa\nu},
+	\eqtag{eq:2}
+	\]
+где $\lambda_{\nu\kappa}$~— некоторые константы.
+
+Нетрудно доказать, что с~этим дополнительным требованием связи в твёрдом теле
+являются идеальными. В~самом деле, с~учётом условий на виртуальные перемещения
+	\[
+	\langle\mbfr_\alpha-\mbfr_\beta,\delta\mbfr_\alpha-\delta\mbfr_\beta\rangle=0,
+	\quad
+	\alpha,\beta=1,\ldots,N
+	\eqtag{eq:3}
+	\]
+форма виртуальной работы сил реакции равна нулю:
+	\[
+	\sum_\nu\langle\mbfR_\nu,\delta\mbfr_\nu\rangle
+		=\sum_\nu\sum_\kappa\lambda_{\nu\kappa}
+		\langle\mbfr_\nu-\mbfr_\kappa,\delta\mbfr_\nu\rangle=0
+	\]
+(последняя сумма состоит из пар слагаемых вида
+	\[
+	\lambda_{\nu\kappa}\langle\mbfr_\nu-\mbfr_\kappa,\delta\mbfr_\nu\rangle
+		+\lambda_{\kappa\nu}\langle\mbfr_\kappa-\mbfr_\nu,\delta\mbfr_\kappa\rangle,
+	\]
+которые уничтожаются парами в~силу~\eqref{eq:3} и симметричности матрицы
+$\lambda_{\nu\kappa}$).
+
+Верно и обратное утверждение.
+
+\begin{theorem*}
+Пусть связи в~твёрдом теле идеальны. Тогда силы их реакции являются
+внутренними.
+\end{theorem*}
+
+\begin{lem*}
+Пусть $f,g_s\colon\BbbR^n\to\BbbR$~— линейные функции, причём $f(x)=0$ в~силу
+$g_s(x)=0$, $s=1,\ldots,k$, $x\in\BbbR^n$. Тогда найдутся множители
+$\lambda_s\in\BbbR$ такие, что $f(x)\equiv\sum_{s=1}^k\lambda_s g_s(x)$.
+\end{lem*}
+
+\begin{proof}[Доказательство леммы]
+Положим $V_s=\ker g_s$. Тогда по условию $f\in(\bigcap_sV_s)^\perp$ (здесь
+$V^\perp$ означает ортогональное дополнение к~подпространству~$V$, то~есть
+$\{h\in(\BbbR^n)^*\mid V\subset\ker h\}$). Утверждение леммы равносильно
+равенству
+	\[
+	\left(\bigcap_sV_s\right)^\perp=\sum_sV_s^\perp.
+	\]
+Заменив в~этом равенстве $V_s$ на $V_s^\perp$ и взяв ортогональное дополнение
+к~обеим частям, получим равносильное равенство
+	\[
+	\bigcap_sV_s^\perp=\left(\sum_sV_s\right)^\perp.
+	\]
+Его справедливость вытекает из того факта, что
+принадлежность линейной функции~$h$ пространствам в~обеих частях равенства
+равносильна принадлежности $h$ каждому из пространств $V_s^\perp$,
+$s=1,\ldots,k$. Лемма доказана.
+%
+%Пусть $h\in\left(\sum_sV_s\right)^\perp$, тогда $h\in V_s^\perp$ при
+%$s=1,\ldots,k$, следовательно, $h\in\bigcap_sV_s^\perp$. Обратно, пусть
+%$h\in\bigcap_sV_s^\perp$, тогда $h\in V_s^\perp$ при $s=1,\ldots,k$,
+%следовательно, $h\in\left(\sum_sV_s\right)^\perp$. Лемма доказана.
+\end{proof}
+
+\begin{proof}[Доказательство теоремы]
+Идеальность связей в~твёрдом теле означает равенство нулю формы виртуальной
+работы сил реакции, то есть обращение в~ноль линейной функции
+$\sum_\nu\langle\mbfR_\nu,\delta\mbfr_\nu\rangle$ на любом векторе
+$(\delta\mbfr_1,\ldots,\delta\mbfr_N)$, удовлетворяющем условиям~\eqref{eq:3},
+также линейным по отношению к~виртуальным перемещениям.
+
+Согласно лемме найдутся такие множители $\lambda_{\alpha\beta}$, что будет
+выполняться равенство
+	\[
+	\sum_\nu\langle\mbfR_\nu,\mbfv_\nu\rangle
+		=\sum_{\alpha,\beta}\lambda_{\alpha\beta}
+		\langle\mbfr_\alpha-\mbfr_\beta,\mbfv_\alpha-\mbfv_\beta\rangle
+	\eqtag{eq:4}
+	\]
+для всевозможных векторов $(\mbfv_1,\ldots,\mbfv_N)$, не стеснённых никакими
+ограничениями.
+
+Расщепляя уравнение~\eqref{eq:4}, получим равенства
+	\[
+	\mbfR_\nu=\sum_\kappa[\lambda_{\nu\kappa}(\mbfr_\nu-\mbfr_\kappa)
+		-\lambda_{\kappa\nu}(\mbfr_\kappa-\mbfr_\nu)]
+		=\sum_\kappa(\lambda_{\nu\kappa}+\lambda_{\kappa\nu})(\mbfr_\nu-\mbfr_\kappa),
+	\]
+то~есть силы реакций связей имеют вид~\eqref{eq:2}, и, следовательно, являются
+внутренними. Теорема доказана.
+\end{proof}
+
+\end{document}
