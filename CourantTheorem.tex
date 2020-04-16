@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\usepackage{indentfirst}
+\usepackage[russian]{hyperref}
+%\usepackage[left=2cm,right=2cm,
+%    top=3cm,bottom=3cm,bindingoffset=0cm]{geometry}
+\usepackage[width=16cm,height=24cm]{geometry}
+
+\setdefaultlanguage{russian}
+\setmainfont{Cambria}
+\setmathfont{Cambria Math}
+\setmathfont{XITS Math}[range={\mathscr,\leqslant,\geqslant}]
+
+
+\begin{document}
+\begin{center}
+\scshape{\LARGE{Теорема Куранта}}
+\vspace{1cm}
+
+\scshape{А. Завадский}
+\end{center}
+\section{Теорема Куранта}
+
+Введём в пространстве $\mathbb{R}^n$ скалярное произведение: $(x,y)=x^Ty.$
+
+\newtheorem{theorem}{Теорема}
+\begin{theorem} [Р. Курант]
+
+Пусть $A$ --- симметрическая вещественная матрица размера $n\times n$, $~\lambda_1\leqslant\lambda_2\leqslant\ldots\leqslant\lambda_n$ --- её собственные значения, расположенные в порядке возрастания. 
+Будем обозначать через $L_k$ множество всех $k$-мерных подпространств в $\mathbb R^{n}$, а его элементы, т.е. подпространства размерности $k,$ --- символом $W$.  Тогда 
+$$\lambda_k=\min_{W\in L_{k}}\max_{\substack{x\in W\\\|x\|=1}}(x,Ax)=\max_{W\in L_{n-k+1}}\min_{\substack{x\in W\\\|x\|=1}}(x,Ax).$$
+\end{theorem}
+\slshape Доказательство.
+\upshape
+
+В некотором ортонормированном базисе матрица $A$ диагональна, т.е. $(x,Ax)=\lambda_1x_1^2+\ldots+\lambda_nx_n^2.$ 
+Рассмотрим $(n-k+1)-$мерное подпространство $W_1=\{x~|~x_1=\ldots=x_{k-1}=0\}$ и $k-$мерное подпространство  $W_2=\{x~|~x_{k+1}=\ldots=x_n=0\}.$
+Заметим, что для любого вектора $x\in W_1,$ имеющего единичную норму, 
+\begin{gather}
+(x,Ax)=\lambda_1x_1^2+\ldots+\lambda_nx_n^2\geqslant\lambda_k(x_k^2+\ldots+x_n^2)=\lambda_k.\label{1}
+\end{gather}
+Значит, $\lambda_k\leqslant\min\limits_{\substack{x\in W_1\\\|x\|=1}}(x,Ax).$ Тогда $\lambda_k\leqslant\max\limits_{W\in L_{n-k+1}}\min\limits_{\substack{x\in W\\\|x\|=1}}(x,Ax).$
+
+Для любого векотра $x\in W_2, \|x\|=1$ имеем
+\begin{gather}
+(x,Ax)=\lambda_1x_1^2+\ldots+\lambda_kx_k^2\leqslant\lambda_k(x_1^2+\ldots+x_k^2)=\lambda_k,\label{2}
+\end{gather}
+т.е. $\lambda_k\geqslant\max\limits_{\substack{x\in W_2\\\|x\|=1}}(x,Ax).$ Тогда $\lambda_k\geqslant\min\limits_{W\in L_{k}}\max\limits_{\substack{x\in W\\\|x\|=1}}(x,Ax).$
+
+Пусть $W_3$ --- произвольное $k-$мерное подпространство.
+Так как $\dim W_1+\dim W_3>n,$ то $W_1\cap W_3\ne\{0\}.$ 
+Тогда найдётся вектор $x\in W_1\cap W_3$ такой, что $\|x\|=1$ и 
+для него выполнено неравенство \eqref{1}.
+Поэтому $\lambda_k\leqslant\max\limits_{x\in W_1\cap W_2}(x,Ax)\leqslant\max\limits_{x\in W_2}(x,Ax).$ 
+Подпространство $W_2\in L_k$ мы выбрали произвольным образом, значит $\lambda_k\leqslant\min\limits_{W\in L_{k}}\max\limits_{\substack{x\in W\\\|x\|=1}}(x,Ax).$
+
+Взяв теперь в качестве $W_3$ произвольное $(n-k+1)-$мерное подпространство и рассмотрев некоторый вектор единичной нормы в $W_2\cap W_3,$ получим аналогично, что $\lambda_k\geqslant\min\limits_{\substack{x\in W_1\\\|x\|=1}}(x,Ax).$ Тогда $\lambda_k\geqslant\max\limits_{W\in L_{n-k+1}}\min\limits_{\substack{x\in W\\\|x\|=1}}(x,Ax).$
+\qed
+
+\textbf{Замечание:}
+теорема верна и в случае эрмитовой матрицы $A$ и эрмитова скалярного произведения в $\mathbb C^n,$ причём доказательство переносится без изменений.
+\section{Малые колебания при наложении голономных связей}
+
+Рассмотрим консервативную лагранжеву систему, заданную лагранжианом $L(q,\dot q)=T(q,\dot q)-U(q),$ способную совершать малые колебания в положении равновесия $q=0$. Пусть $\lambda_1\leqslant\ldots\leqslant\lambda_n$ --- её собственные значения. Наложим на систему дополнительную голономную автономную связь $g(q)=0,$ такую, что $g(0)=0,$ т.е. положение равновесия удовлетворяет уравнению связи. Считаем также, что $g$ --- гладкая функция и $\frac{\partial g}{\partial q}\big{|}_{q=0}\ne0.$ На самом деле, можно считать функцию $g$ линейной, т.к. при исследовании малых колебаний рассматривается не сами связи, а их линейные приближения.
+
+Обобщённые координаты можно ввести так, что $g(q)=q_n$, т.е. новая связь задаётся уравнением $q_n=0.$ Пусть $\mu_1\leqslant\ldots\leqslant \mu_{n-1}$ --- собственные значения новой системы.
+
+\begin{theorem} 
+При наложении связи новые собственные значения чередуются со старыми: $$\lambda_1\leqslant\mu_1\leqslant\lambda_2\leqslant\ldots\leqslant\mu_{n-1}\leqslant\lambda_n.$$
+\end{theorem}
+
+Доказательство основывается на применении теоремы Куранта.
+
+Пусть $A$ --- матрица кинетической энергии: $A=a_{ij}(0),$ а $B$ --- матрица Гессе потенциальной энергии в нуле: $B=\frac{\partial^2 U(0)}{\partial q_i\partial q_j}.$ Числа $\lambda_1,\ldots,\lambda_n$ --- это собственные числа пары форм с матрицами $A$ и $B.$ В нормальных координатах имеем $(q,Bq)=\lambda_1q_1^2+\ldots+\lambda_nq_n^2$ на эллипсоиде $\{q~|~(q,Aq)=1\}.$
+
+Рассмотрим $(n-1)$ --- мерное подпространство, задаваемое уравнением $q_n=0$. Оно соответствует системе с новой связью. Обозначим через $\tilde L_k$ множество $k-$мерных подпространств, содержащихся в нём. Очевидно, $\tilde L_k\subset L_k.$
+Из первого равенства в теореме Куранта
+$$\mu_k=\min_{W\in \tilde L_{k}}\max_{\substack{q\in W\\\|q\|=1}}(q,Bq)\geqslant\min_{W\in L_{k}}\max_{\substack{q\in W\\\|q\|=1}}(q,Bq)=\lambda_k,$$
+а из второго
+$$\mu_k=\max_{W\in\tilde L_{n-k}}\min_{\substack{q\in W\\\|q\|=1}}(q,Bq)\leqslant\max_{W\in L_{n-k+1}}\min_{\substack{q\in W\\\|q\|=1}}(q,Bq)=\lambda_{k+1}.$$
+\qed
+
+Собственные значения являются квадратами частот малых колебаний систем. Поэтому теорему 2 можно переформулировать следующим образом:
+\slshape при наложении связи частоты колебаний новой системы чередуются с частотами старой.\upshape
+\begin{thebibliography}{3}
+\bibitem{Prasolov}
+В. В. Прасолов.	Задачи и теоремы линейной алгебры, М.: МЦНМО, 2016
+\bibitem{Bolotin}
+С. В. Болотин и др. Теоретическая механика, М.: Академия, 2010
+\end{thebibliography}
+\end{document}

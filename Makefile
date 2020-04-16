@@ -1,14 +1,14 @@
 .PHONY=publish build clean
 
-TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf logo-skull.svg logo-biohazard.svg
+TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf logo-skull.svg logo-biohazard.svg
 
-build: Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf
+build: Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf
 
-*.pdf: *.tex
+%.pdf: %.tex
 	latexmk --lualatex $^
 
 publish: build
-	rsync -avz --progress -e 'ssh -p 00000' $(TO_PUBLISH) shvetz@mech.math.msu.su:~/public_html/coronavirus/
+	rsync -avz --progress -e 'ssh -p 22016' $(TO_PUBLISH) shvetz@mech.math.msu.su:~/public_html/coronavirus/
 
 clean:
 	latexmk -c
