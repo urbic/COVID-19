@@ -64,7 +64,7 @@ S[q]=\int\limits_{t_1}^{t_2} L(t,q(t),\dot{q}(t))dt
 Отметим, что $\mbfsansE(L)$ можно получить «проварьировав» функционал действия. Для этого рассмотрим приращение $S[q+h]-S[q]$ при условии $h(t_0)=h(t_1)=0$. Тогда, применяя формулу Тейлора, а затем интегрируя по частям, получим
 
 $$S[q+h]-S[q]=\int\limits_{t_1}^{t_2}\left( L(t,q(t)+h(t),\dot{q}(t)+\dot{h}(t))-L(t,q(t),\dot{q}(t))\right) dt= $$
-$$=\int\limits_{t_1}^{t_2}\left( \sum\limits_{\alpha=1}^m\dfrac{\partial L}{\partial q_\alpha}h_\alpha+\dfrac{\partial L}{\partial\dot{q}_\alpha}\dot{h}_\alpha\right) dt +r(h)=\int\limits_{t_1}^{t_2}\sum\limits_{\alpha=1}^m\left( \dfrac{\partial L}{\partial q_\alpha}-\dfrac{d}{dt}\dfrac{\partial L}{\partial\dot{q}_\alpha}\right)h_\alpha+r(h).$$
+$$=\int\limits_{t_1}^{t_2}\left( \sum\limits_{\alpha=1}^m\dfrac{\partial L}{\partial q_\alpha}h_\alpha+\dfrac{\partial L}{\partial\dot{q}_\alpha}\dot{h}_\alpha\right) dt +r(h)=\int\limits_{t_1}^{t_2}\left(\sum\limits_{\alpha=1}^m\left( \dfrac{\partial L}{\partial q_\alpha}-\dfrac{d}{dt}\dfrac{\partial L}{\partial\dot{q}_\alpha}\right)h_\alpha\right)\,dt+r(h).$$
 Откуда получаем
 \begin{equation}\label{eq2}
 S[q+h]-S[q]=\int\limits_{t_1}^{t_2}\sum\limits_{\alpha=1}^m \mbfsansE_\alpha(L)[t,q(t),\dot{q}(t)]h_\alpha(t)dt +r(h),~~\dfrac{||r||}{||h||}\rightarrow 0, ~\text{при}~h\rightarrow 0.
