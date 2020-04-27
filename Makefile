@@ -1,8 +1,8 @@
 .PHONY=publish build clean
 
-TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf logo-skull.svg logo-biohazard.svg
+TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf Poisson.pdf logo-skull.svg logo-biohazard.svg
 
-build: Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf
+build: Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf Poisson.pdf
 
 %.pdf: %.tex
 	latexmk --lualatex $^
