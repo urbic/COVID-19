@@ -1,0 +1,130 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{luatex85}
+\usepackage{comment}
+\usepackage[warn]{mathtext}
+%\usepackage[T1,T2A]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage[babelshorthands]{polyglossia}
+%\usepackage[russian, english]{babel}
+%\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{euscript}
+%\usepackage{geometry} \geometry{verbose,a4paper,tmargin=1.5cm,bmargin=4cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage[width=16cm,height=24cm]{geometry}
+\usepackage{unicode-math}
+\usepackage{microtype}
+%\renewcommand{\baselinestretch}{1}
+%\linespread{1.4}
+%\setlength{\parskip}{0.15cm}
+\def\[#1\]{\begin{align*}#1\end{align*}}
+
+\setmainlanguage{russian}
+
+\setmainfont{Cambria}
+\setsansfont{Calibri}
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmathfont{Cambria Math}[sans-style=literal]
+\setmathfont{XITS Math}[range={\mathscr}]
+
+
+\begin{document}
+\author{В.~Белослудцев}
+\title{Продолжения векторных полей}
+\maketitle
+
+\section{Вывод общей формулы}
+
+Для того, чтобы в~голове не возникало каши из дифференциальной геометрии
+и~аналитической механики, проведём небольшое повторение: 
+
+В каждый момент времени для точки определена координата $x$, и~её скорость
+$\dot x$. Вместе со~временем~$t$ эти три параметра дают нам расширенное
+фазовое пространство $\tilde M\ni(t,x,\dot x)$~— всевозможные варианты движения
+точки. Для простоты мы считаем, что координаты~$x$ точки образуют гладкое
+многообразие $M$. А раз многообразие гладкое, то можем говорить и~о~касательном
+расслоении $M^*\ni(x,\dot x)$.
+
+\vspace{0.6 cm}
+
+\textbf{Резюме:}
+
+В~\emph{конфигурационном пространстве} живут координаты точек $x$.
+
+В~\emph{расширенном конфигурационном пространстве} живут координаты точек $x$
+и~время $t$.
+
+В \emph{расширенном фазовом пространстве} живут координаты точек $x$, скорости
+$\dot x$ и~время~$t$.
+
+\vspace{0.6 cm}
+
+Ввиду приведённых выше соображений из механики, буквы $(t,x,\dot x)$ не
+являются полностью независимыми. Между ними имеется дифференциальное
+соотношение $\frac{dx}{dt}=\dot x$. Нужно, чтобы и~после преобразований
+фазовым потоком (речь о нём пойдёт ниже) это соотношение сохранилось. Сие
+и~выражено в~условиях Пфаффа.
+
+Предположим, что теперь из всевозможных движений точки мы хотим выбрать
+конкретные. Для этого будем рассматривать дифференциальные уравнения на
+расширенном фазовом пространстве. Эти уравнения соответствуют какому"=то
+фазовому потоку (обозначим соответствующую однопараметрическую группу через
+$G$), который в свою очередь даст нам обобщённое векторное поле
+$\mathbf{v}=\sum_{j=1}^n\xi_{j}\partial_{x_{j}}+\tau\partial_t$. Здесь нет
+дифференцирования по $\dot{x}$, так~как пока мы считаем, что группа действует
+только на множестве координат и~на времени. А~теперь рассмотрим действие этой
+группы на всём расширенном фазовом пространстве. Действие на $x$ и $t$ мы уже
+знаем. В~листке показывалось, как через дифференциал доопределить действие на
+$\dot{x}$. Теперь~же мы хотим понять, как будут выглядеть генераторы нашего
+нового действия $\mathbf{pr^{(1)}}G$:
+	\[
+	g^{\varepsilon}(x)\colon\tilde M\to\tilde M,
+	\quad
+	(t,x,\dot x)\mapsto(\hat x,\hat{\dot x},\hat t).
+	\]
+
+Коэффициенты генератора для $\partial_{x}$ и $\partial_{t}$ мы уже знаем.
+Осталось найти коэффициенты при $\partial_{\dot{x}}$. Обозначим их через
+$\eta=\frac{d\hat{\dot x}}{d\varepsilon}\Bigr|_{\varepsilon=0}$.
+
+Условия Пфаффа гласят: если $dx_{j}=\dot{x}_{j}\,dt$, то $d\hat
+x_j=\hat{\dot{x}}_{j}\,d\hat{t}$. 
+
+Разложим слагаемые из последнего равенства в ряд по $\varepsilon$ до первой
+степени:
+	\[
+	&\hat x_j=x_j+\varepsilon\xi_j+o(\varepsilon),\\
+	&\hat{\dot{x}}_j=\dot x_j+\varepsilon\eta_j+o(\varepsilon),\\
+	&\hat{t}=t+\varepsilon\tau+o(\varepsilon).
+	\]
+
+Подставив эти разложения в~условия Пфаффа, получим следующее (что-то успешно
+сократится):
+	\[
+	d(x_j+\varepsilon\xi_j+o(\varepsilon))
+		-(\dot x_j+\varepsilon\eta_j+o(\varepsilon))\,d(t+\varepsilon\tau+o(\varepsilon))=0.
+	\]
+Следовательно,
+	\[
+	\varepsilon\eta_{j}\,dt+o(\varepsilon)
+		=\varepsilon\,d\xi_{j}-\varepsilon\dot{x}_{j}\,d\tau+o(\varepsilon).
+	\]
+Значит,
+	\[
+	\frac{d\dot{x}_{j}}{dt}=\eta_j=\dot\xi_{j}-\dot\tau\dot x_j
+		=(\xi_j-\tau\dot x_j)\dot{\,}+\tau\ddot x_j.
+	\]
+Таким образом, новое векторное поле выглядит так\footnote{Заметим, что
+полученная формула в~частном случае, когда $\tau=0$, даёт формулу
+из методички (да и~могло~ли быть иначе?).~\emph{— А.~Ш.}}:
+	\[
+	\mathbf{pr^{(1)}v}=\mathbf{v}+\sum_{j=1}^n\eta_j\partial_{\dot x_j}
+		=\sum_{j=1}^n\xi_j\partial_{x_j}+\tau\partial_t
+		+\sum_{j=1}^n({\dot\xi}_j-\dot\tau\dot x_j)\partial_{\dot x_j}.
+	\]
+
+\end{document}
