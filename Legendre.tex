@@ -16,7 +16,8 @@
 \usepackage{microtype}
 \usepackage[width=16cm,height=24cm]{geometry}
 \usepackage[russian]{hyperref}
-\usepackage{luamplib}
+\usepackage{graphicx}
+\usepackage{caption}
 
 \setmainlanguage{russian}
 
@@ -27,7 +28,7 @@
 \setmathfont{Cambria Math}[sans-style=literal]
 \setmathfont{XITS Math}[range={\mathscr}]
 
-\addbibresource{\jobname.bib}
+%\addbibresource{\jobname.bib}
 
 \makeatletter
 
@@ -112,6 +113,14 @@ $(x,u,p)$ к~новым буквам $(\hat x,\hat u,\hat p)$ по формул�
 что равно нулю в~силу~\eqref{eq:pfaff}.
 
 \bigskip
+
+\begin{figure}
+\centering
+\includegraphics[height=2.5in]{Legendre.png}
+\medskip
+\caption*{Adrien-Marie Legendre}
+% https://en.wikipedia.org/
+\end{figure}
 
 Преобразование Лежандра можно использовать для решения обыкновенных
 дифференциальных уравнений Клеро (и~для упрощения уравнений других типов)
