@@ -1,6 +1,6 @@
 .PHONY=publish build clean
 
-TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf logo-skull.svg logo-biohazard.svg
+TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf logo-skull.svg logo-biohazard.svg Legendre.png
 
 build: Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf
 
