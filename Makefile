@@ -2,10 +2,11 @@
 
 TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf \
 	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf \
+	LieAlgegraVariationSymmetries.pdf \
 	logo-skull.svg logo-biohazard.svg Legendre.png
 
 build: Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf \
-	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf
+	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf LieAlgegraVariationSymmetries.pdf
 
 %.pdf: %.tex
 	latexmk --lualatex $^
