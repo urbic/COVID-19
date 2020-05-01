@@ -1,0 +1,155 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{luatex85}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage[fleqn,reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage[math-style=ISO,bold-style=upright,partial=italic]{unicode-math}
+\usepackage{microtype}
+\usepackage[width=16cm,height=24cm]{geometry}
+\usepackage[russian]{hyperref}
+\usepackage{luamplib}
+
+\setmainlanguage{russian}
+
+\setmainfont{Cambria}
+\setsansfont{Calibri}
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmathfont{Cambria Math}[sans-style=literal]
+\setmathfont{XITS Math}[range={\mathscr}]
+
+\makeatletter
+
+\allowdisplaybreaks[4]
+
+\def\[#1\]{\begin{align*}#1\end{align*}}
+\newcommand\eqtag[1]{\refstepcounter{equation}\tag{\theequation}\label{#1}}
+
+%\newcommand\slashfrac[2]{{#1\fracslash#2}}
+\newcommand\slashfrac[2]{{#1/#2}}
+
+\newcommand\pr{\operatorname{\textbf{\textup{pr}}}}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{theorem*}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{example}{Пример}
+%\newtheorem{proof}{Доказательство}
+
+\newcommand\metasetup{\hypersetup{
+	pdftitle=\@title,
+	pdfauthor=\@author,
+	linkbordercolor={0 .5 .25},
+	}}
+
+\setlength\overfullrule{5pt}
+
+\makeatother
+
+\begin{document}
+
+\hyphenation{Ла-гран-жа ла-гран-же-вой}
+
+\title{Домашнее задание на~лето}
+\author{А.~Н.~Швец}
+
+\metasetup
+\maketitle
+
+На множестве четырёхугольников на плоскости рассмотрим преобразование,
+переводящее четырёхугольник $\mbfx_1\mbfx_2\mbfx_3\mbfx_4$
+в~$\mbfy_1\mbfy_2\mbfy_3\mbfy_4$, где $\mbfy_1,\mbfy_2,\mbfy_3,\mbfy_4$ суть
+ортоцентры треугольников $\mbfx_2\mbfx_3\mbfx_4$, $\mbfx_1\mbfx_3\mbfx_4$,
+$\mbfx_1\mbfx_2\mbfx_4$, $\mbfx_1\mbfx_2\mbfx_3$ соответственно
+(рис.~\ref{fig:1}).
+
+\begin{figure}[h]
+\centering
+\leavevmode
+\begin{mplibcode}
+input elementi;
+input colorbrewer-rgb;
+
+beginfig(0)
+u:=cm;
+
+z1=origin;
+z2=(6u, -.5u);
+z3=(5u, 3u);
+z4=(2u, 4u);
+z5=orthocenter(z1, z2, z3);
+z6=orthocenter(z2, z3, z4);
+z7=orthocenter(z3, z4, z1);
+z8=orthocenter(z4, z1, z2);
+
+draw altitude(z1, z2, z3) withcolor Greys[3][2];
+draw z1--z7 withcolor Greys[3][2];
+draw z2--z6 withcolor Greys[3][2];
+draw altitude(z2, z4, z1) withcolor Greys[3][2];
+draw z3--z7 withcolor Greys[3][2];
+draw altitude(z3, z1, z2) withcolor Greys[3][2];
+draw altitude(z4, z1, z2) withcolor Greys[3][2];
+draw z4--z6 withcolor Greys[3][2];
+
+draw z1--z2--z3--z4--cycle withpen pencircle scaled bp withcolor Blues[3][3];
+draw z5--z6--z7--z8--cycle withpen pencircle scaled bp withcolor Greens[3][3];
+
+label.bot(textext("$\mbfx_1$"), z1);
+label.bot(textext("$\mbfx_2$"), z2);
+label.top(textext("$\mbfx_3$"), z3);
+label.top(textext("$\mbfx_4$"), z4);
+
+label.bot(textext("$\mbfy_4$"), z5);
+label.top(textext("$\mbfy_1$"), z6);
+label.top(textext("$\mbfy_2$"), z7);
+label.bot(textext("$\mbfy_3$"), z8);
+
+endfig
+\end{mplibcode}
+\caption{Построение равновеликого четырёхугольника}\label{fig:1}
+\end{figure}
+
+Посмотреть на преобразование в~действии
+\href{https://www.geogebra.org/m/uadvg7bz}{можно} на сайте Геогебры.
+
+\begin{enumerate}
+\item
+Проверьте, верно~ли, что преобразование является каноническим относительно
+симплектической 2"=формы в~8"=мерном пространстве координат вершин
+четырёхугольника.
+	\[
+	\omega=\sum_{i=1}^4dx_i^1\wedge dx_i^2,
+	\]
+где $(x_i^1,x_i^2)$~— координаты вершины $\mbfx_i$.
+
+\item
+Докажите, что преобразование сохраняет площадь
+четырёхугольника\footnote{Об~описанном отображении и~данном его свойстве нам
+в~1998~г. в~частном разговоре сообщил Д.~В.~Трещёв со~ссылкой,
+предположительно, на В.~Е.~Подольского.}, иными словами, площадь является
+первым интегралом отображения.
+
+\item
+Докажите, что все 8~вершин четырёхугольников $\mbfx_1\mbfx_2\mbfx_3\mbfx_4$
+и~$\mbfy_1\mbfy_2\mbfy_3\mbfy_4$ лежат на некоторой квадрике.
+
+\item
+Пользуясь ранее доказанным, докажите, что названная квадрика есть равнобочная
+гипербола.
+
+\item
+Пользуясь ранее доказанным, докажите, что отображение обладает четырьмя
+независимыми первыми интегралами, рациональными относительно координат вершин
+(осторожно, очень громоздкие выражения, пользуйтесь CAS).
+
+\item
+Выразите площадь как функцию найденных первых интегралов.
+
+\item
+Составьте таблицу скобок Пуассона найденных первых интегралов.
+
+\end{enumerate}
+
+\end{document}

@@ -1,12 +1,12 @@
 .PHONY=publish build clean
 
-TO_PUBLISH=index.xhtml Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf \
-	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf \
-	LieAlgegraVariationSymmetries.pdf \
-	logo-skull.svg logo-biohazard.svg Legendre.png
+PDF_FILES=Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf \
+	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf LieAlgegraVariationSymmetries.pdf \
+	HappySummer.pdf
 
-build: Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf \
-	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf LieAlgegraVariationSymmetries.pdf
+TO_PUBLISH=index.xhtml $(PDF_FILES) logo-skull.svg logo-biohazard.svg Legendre.png
+
+build: $(PDF_FILES)
 
 %.pdf: %.tex
 	latexmk --lualatex $^
