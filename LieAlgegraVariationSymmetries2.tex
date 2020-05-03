@@ -66,10 +66,9 @@
 Отсюда
 	\[
 	&[\pr \vv, \pr \uu]=\sum_i\bigg( \xi_i \sum_j \left( \partfrac{\eta_j}{x_i} \der{j} + \eta_j \der{i} \der{j}
-		+ \partfrac{\dot\eta_j}{x_i} \derdot{j}+\dot\eta_j\der{i} \der{j}\right)+{}\\
+		+ \partfrac{\dot\eta_j}{x_i} \derdot{j}+\dot\eta_j\der{i} \derdot{j}\right)+{}\\
 	&\qquad
-		% FIXME \dot j
-		+\dot\xi_i\sum_j \left( \eta_j \derdot{i}\dot j + \partfrac{\eta_j}{x_i} \derdot{j}+\dot\eta_j\derdot{i} \derdot{j}\right) \bigg)
+		+\dot\xi_i\sum_j \left( \eta_j \derdot{i}\der j+\partfrac{\eta_j}{x_i} \derdot{j}+\dot\eta_j\derdot{i} \derdot{j}\right) \bigg)
 		-\sum_j(\ldots),
 	\]
 и после взаимного уничтожения одинаковых слагаемых получаем
