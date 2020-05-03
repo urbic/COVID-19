@@ -3,6 +3,7 @@
 PDF_FILES=Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf \
 	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf \
 	LieAlgebraVariationSymmetries1.pdf \
+	LieAlgebraVariationSymmetries1Comments.tex \
 	LieAlgebraVariationSymmetries2.pdf \
 	LieAlgebraVariationSymmetries3.pdf \
 	HappySummer.pdf
