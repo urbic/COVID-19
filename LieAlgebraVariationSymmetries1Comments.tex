@@ -1,0 +1,126 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{luatex85}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage[fleqn,reqno]{amsmath}
+\usepackage{amsthm}
+\RequirePackage[
+	backend=biber,
+	bibstyle=gost-numeric,
+	citestyle=gost-numeric,
+	%defernumbers=true,
+	defernumbers=false,
+	language=auto,
+	autolang=langname,
+	]{biblatex}
+\usepackage[math-style=ISO,bold-style=upright,partial=italic]{unicode-math}
+\usepackage{microtype}
+\usepackage[width=16cm,height=24cm]{geometry}
+\usepackage[russian]{hyperref}
+
+\setmainlanguage{russian}
+
+\setmainfont{Cambria}
+\setsansfont{Calibri}
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmathfont{Cambria Math}[sans-style=literal]
+\setmathfont{XITS Math}[range={\mathscr}]
+
+\addbibresource{\jobname.bib}
+
+\makeatletter
+
+\allowdisplaybreaks[4]
+
+\def\[#1\]{\begin{align*}#1\end{align*}}
+\newcommand\eqtag[1]{\refstepcounter{equation}\tag{\theequation}\label{#1}}
+
+
+\title{Дифференциал операции продолжения группы}
+\author{В. Боровик}
+\date{3 мая 2020}
+
+ \newcommand{\pr}{\mathbf{pr}}
+ \newcommand{\vv}{\mathbf{v}}
+ \newcommand{\ww}{\mathbf{w}}
+
+\begin{document}
+\maketitle
+\sloppy
+
+Пусть $M$~—  гладкое многообразие с локальными координатами $x =
+(x_1,\ldots,x_n)$, на котором действует группа  преобразований $G=\{g^\varepsilon\}$ по правилу: $g^\varepsilon\cdot x=\hat x$.
+Определим операцию \textit{первого продолжения\/} группы $G$:
+	\[
+	\pr^{(1)}\colon\{g^{\varepsilon}\} \rightarrow \{\left(g^{\varepsilon},(g^{\varepsilon})^*\right)\},
+	\]
+где $(g^{\varepsilon})^*$~— дифференциал преобразования $g^\varepsilon$.
+
+Группа $\pr^{(1)}G = \{\left(g^{\varepsilon},(g^{\varepsilon})^* \right)\}$ действует уже на касательном расслоении $M^* = \{(x, \dot x)\}$ по правилу:
+	\[
+	(g^{\varepsilon},(g^{\varepsilon})^* ) \cdot (x, \dot x) = (\hat x, \hat{\dot x}),
+	\]
+где $\hat{\dot x}$ определяется условиями согласованности Пфаффа
+	\[
+	(d\hat x_i=\hat{\dot x}\,dt)\bmod(d x_j = \dot x_j\,dt),
+	\quad
+	i,j=1,\ldots,n.
+	\]
+Отображение $\pr^{(1)}$ осуществляет гомоморфизм локальных групп Ли в~силу
+следущих соотношений:
+	\[
+	\pr^{(1)}g^{\alpha+\beta}=\left(g^{\alpha+\beta},(g^{\alpha+\beta})^*\right)
+		=(g^\beta\circ g^\alpha,(g^\beta)^*\circ(g^\alpha)^*)
+		=\pr^{(1)}g^\alpha\circ\pr^{(1)}g^\beta,
+	\]
+здесь мы пользуемся тем, что дифференциал композиции отображений является
+композицией дифференциалов.
+
+Раннее мы установили соответствие между однопараметрическими группами
+преобразований $M$ и векторными полями на $M$. 
+	\[
+	g^\varepsilon=\mathbf{exp}(\varepsilon \vv),
+	\quad
+	\vv=\frac d{d\varepsilon}\bigg |_{\varepsilon = 0}g^{\varepsilon}.
+	\]
+Если рассматривать $g^\varepsilon\colon\mathbb{R}\to G$ как кривую на
+многообразии $G$, проходящую через единицу, то из определения $\vv$ следует,
+что это касательный вектор в смысле классов эквивалентности соприкасающихся
+кривых. Таким образом, $\vv\in T_{g^0}G$~—  касательному пространству в~единице
+группы Ли~$G$, которое, как известно, отождествляется с~алгеброй Ли группы~$G$,
+в~дальнейшем будем обозначать ее $\mathcal{Lie}(G)$. Аналогично, элементами
+алгебры Ли $\mathcal{Lie}(\pr^{(1)}G)$ группы $\pr^{(1)}G$ являются генераторы
+$\pr^{(1)}\vv$:
+	\[
+	\pr^{(1)}\vv=\frac d{d \varepsilon}\bigg|_{\varepsilon = 0}\pr^{(1)}g^{\varepsilon}.
+	\]
+С~другой стороны, дифференциал описанного отображения $d\pr^{(1)}$ сопоставляет
+касательному вектору $\vv\in\mathcal{Lie}(G)$ касательный вектор
+$d\pr^{(1)}(\vv) \in \mathcal{Lie}(\pr^{(1)}G)$ по правилу:
+	\[
+	d\pr^{(1)}(\vv)=d\pr^{(1)}\left(\frac d{d\varepsilon}\bigg|_{\varepsilon=0}g^\varepsilon\right)
+		=\frac{d}{d\varepsilon}\bigg |_{\varepsilon=0} \left( \pr^{(1)}\circ g^\varepsilon\right)
+		=\frac{d}{d\varepsilon}\bigg |_{\varepsilon=0}\pr^{(1)}g^\varepsilon=\pr^{(1)}\vv.
+	\]
+Так как мы определили касательный вектор, как класс соприкасающихся кривых, то
+использовали соответствующее определение дифференциала:
+	\[
+	d_x\phi(\gamma'(0))=(\phi \circ \gamma)'(0),
+	\]
+где $\phi\colon M\to N$, $\gamma$~— кривая в~$M$, такая что $\gamma(0)=x$.
+
+Таким образом, получается, что операция продолжения векторных полей является
+дифференциалом отображения $\pr^{(1)}$ между $G$ и $\pr^{(1)}G$.
+	\[
+	&\pr^{(1)}: G \rightarrow \pr^{(1)}G,\\
+	&d\pr^{(1)}: \mathcal{Lie}(G) \rightarrow \mathcal{Lie}(\pr^{(1)}G).
+	\]
+Дифференциал гомоморфизма групп Ли является гомоморфизмом алгебр Ли, в силу
+этого получаем соотношение:
+	\[
+	\pr^{(1)}[\vv,\ww]=[\pr^{(1)}\vv, \pr^{(1)}\ww],
+	\quad
+	\forall \vv,\ww\in\mathcal{Lie}(G).
+	\]
+
+\end{document}
