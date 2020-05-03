@@ -1,0 +1,123 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{luatex85}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage[fleqn,reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage[math-style=ISO,bold-style=upright,partial=italic]{unicode-math}
+\usepackage{microtype}
+\usepackage[width=16cm,height=24cm]{geometry}
+\usepackage[russian]{hyperref}
+
+\setmainlanguage{russian}
+
+\setmainfont{Cambria}
+\setsansfont{Calibri}
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmathfont{Cambria Math}[sans-style=literal]
+\setmathfont{XITS Math}[range={\mathscr}]
+
+\makeatletter
+
+\allowdisplaybreaks[4]
+
+\def\[#1\]{\begin{align*}#1\end{align*}}
+
+\newcommand{\pr}{\mathrm{pr}^{(1)}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\der}[1]{\partial_{x_{#1}}}
+\newcommand{\derdot}[1]{\partial_{\dot{x}_{#1}}}
+\newcommand{\partfrac}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Задача 6.}
+\author{К.~Шахматов}
+\date{}
+
+\begin{document}
+\maketitle
+Пусть
+	\[
+	&\vv = \sum_{i=1}^n \xi_i(x) \der{i},
+	\quad
+	\uu = \sum_{i=1}^n \eta_i(x) \der{i},\\
+	&\pr\vv(L)=\dot A,
+	\quad
+	\pr\uu(L)=\dot B.
+	\]
+Тогда
+	\[
+	&[\vv, \uu] = \vv \left( \sum_i \eta_i \der{i}\right)
+		-\uu\left( \sum_j \xi_j \der{j}\right)
+		=\sum_j \xi_j \der{j}\left(\sum_i \eta_i \der{i}\right)-\sum_i \eta_i \der{i}\left(\sum_j \xi_j \der{j}\right)={}\\
+	&\qquad
+		= \sum_j \xi_j \sum_i (\der{j} \eta_i \der{i} + \eta_i \der{j} \der{i}) - \sum_i \eta_i \sum_j (\der{i} \xi_{j} \der{j} + \xi_j \der{i} \der{j})={}\\
+	&\qquad
+		=\sum_i \sum_j \left( \xi_j \partfrac{\eta_i}{x_j} - \eta_j \partfrac{\xi_i}{x_j} \right)\der{i},\\
+	&\pr [\vv, \uu] = [\vv, \uu] + \sum_i \sum_j \left( \dot\xi_j\partfrac{\eta_i}{x_j}
+		+\xi_j\left( \partfrac{\eta_i}{x_j} \right)\dot{\Bigr.}-\dot\eta_j\partfrac{\xi_i}{x_j}
+		-\eta_j\left(\partfrac{\xi_i}{x_j} \right)\dot{\Bigr.}\;\right)\derdot{i}.
+	\]
+Заметим, что
+	\[
+	\left(\partfrac{\eta_i}{x_j}\right)\dot{\Bigr.}
+		=\sum_k \frac{\partial^2 \eta_i}{\partial x_j \partial x_k}\dot x_k=\partfrac{}{x_j}\dot\eta_i.
+	\]
+Отсюда
+	\[
+	&[\pr \vv, \pr \uu]=\sum_i\bigg( \xi_i \sum_j \left( \partfrac{\eta_j}{x_i} \der{j} + \eta_j \der{i} \der{j}
+		+ \partfrac{\dot\eta_j}{x_i} \derdot{j}+\dot\eta_j\der{i} \der{j}\right)+{}\\
+	&\qquad
+		% TODO \dot j
+		+\dot\xi_i\sum_j \left( \eta_j \derdot{i}\dot j + \partfrac{\eta_j}{x_i} \derdot{j}+\dot\eta_j\derdot{i} \derdot{j}\right) \bigg)
+		-\sum_j(\ldots),
+	\]
+и после взаимного уничтожения одинаковых слагаемых получаем
+	\[
+	&[\pr \vv, \pr \uu]={}\\
+	&\qquad
+		=\sum_i\sum_j\left(\xi_j \partfrac{\eta_i}{x_j}
+			-\eta_j\partfrac{\xi_i}{x_j}\right)\der{i}
+			+\sum_i\sum_j\left(\xi_j\partfrac{\dot\eta_i}{x_j}
+			+\dot\xi_j\partfrac{\eta_i}{x_j}-\eta_j\frac{\dot\xi_i}{x_j}-\dot\eta_j\partfrac{\xi_i}{x_j}\right)\derdot{i}={}\\
+	&\qquad
+		=\pr[\uu,\vv].
+	\]
+Нам достаточно доказать
+	\[
+	[\pr \vv, \pr \uu](L) = \frac{d}{dt} \big( \pr \vv (B) - \pr \uu (A) \big).
+	\]
+Заметим, что
+	\[
+	&\partfrac{}{x_i}\frac{dA}{dt}=\frac{\partial^2 A}{\partial t \partial x_i}
+		+\sum_{\beta\geq0}\sum_\alpha\frac{\partial^2 A}{\partial x_i\partial x_{\alpha}^{(\beta)}}x_\alpha^{(\beta + 1)}
+		=\frac{d}{dt}\partfrac{A}{x_i},\\
+	&\partfrac{}{\dot x_i}\frac{dA}{dt}=\partfrac{}{\dot x_i}\left(\partfrac{A}{t}
+		+\sum_\alpha\partfrac{A}{x_\alpha}\dot x_\alpha+\sum_{\beta\geq1}\sum_\alpha\partfrac{A}{x_\alpha^{(\beta)}}x_\alpha^{(\beta + 1)}\right)
+		=\frac{d}{dt}\partfrac{A}{\dot x_i}+\partfrac{A}{x_i}.
+	\]
+Значит,
+	\[
+	&\frac{d}{dt}(\vv(B) - \uu(A))={}\\
+	&\qquad
+		=\sum_i\left(\dot\xi_i\partfrac{B}{x_i}
+		+\xi_i\partfrac{\dot B}{x_i}+\dot\xi_i\left(\partfrac{\dot B}{\dot x_i}-\partfrac{B}{x_i}\right)
+		-\dot\eta_i\partfrac{A}{x_i}-\eta_i\partfrac{\dot A}{x_i}-\dot\eta_i\left(\partfrac{\dot A}{\dot x_i}-\partfrac{A}{x_i}\right)\right) ={}\\
+	&\qquad
+		=\sum_i\bigg(\xi_i\sum_k\left(\partfrac{\eta_k}{x_i} \partfrac{L}{x_k}
+		+\eta_k \frac{\partial^2 L}{\partial x_i \partial x_k}
+		+\partfrac{\dot\eta_k}{x_i}\partfrac{L}{\dot x_k}+\dot\eta_k\frac{\partial^2 L}{\partial\dot x_k\partial x_i}\right)+{}\\
+	&\qquad
+		+\dot\xi_i\sum_k\left(\eta_k\frac{\partial^2 L}{\partial x_k\partial\dot x_i}
+		+\partfrac{\eta_k}{x_i}\partfrac{L}{\dot x_k}+\dot\eta_k\frac{\partial^2 L}{\partial\dot x_k\partial\dot x_i}\right)-\dots\bigg),
+	\]
+и после взаимного уничтожения одинаковых слагаемых получаем
+	\[
+	&\frac{d}{dt}(\vv(B)-\uu(A))=\sum_i\left(\xi_i\sum_k\left(\partfrac{\eta_k}{x_i} \partfrac{L}{x_k}+\partfrac{\dot\eta_k}{x_i}\partfrac{L}{\dot x_k}\right)
+		-\eta_i\sum_k\left(\partfrac{\xi_k}{x_i} \partfrac{L}{x_k} + \partfrac{\dot\xi_k}{x_i} \partfrac{L}{\dot x_k}\right)\right)={}\\
+	&\qquad
+		=[\pr\vv,\pr\uu](L),
+	\]
+что и требовалось.
+
+\end{document}

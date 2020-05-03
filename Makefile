@@ -1,7 +1,9 @@
 .PHONY=publish build clean
 
 PDF_FILES=Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForces.pdf Noether.pdf \
-	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf LieAlgegraVariationSymmetries.pdf \
+	CourantTheorem.pdf Poisson.pdf Prolongation.pdf Legendre.pdf Jacobi.pdf \
+	LieAlgegraVariationSymmetries.pdf \
+	LieAlgegraVariationSymmetries2.pdf \
 	HappySummer.pdf
 
 TO_PUBLISH=index.xhtml $(PDF_FILES) logo-skull.svg logo-biohazard.svg Legendre.png
