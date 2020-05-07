@@ -176,12 +176,13 @@ $\pr[\vv,\ww](L)=0$.
 $\slashfrac{\partial{\eta_j}}{\partial\dot x_i}$, поскольку $\eta_j$ не зависят
 от $\dot x$. При вычислении разности $\pr\vv\circ\pr\ww-\pr\ww\circ\pr\vv$ все
 суммы вида $\sum_{(i,j)}$ уйдут ввиду того, что будут содержаться
-и~в~уменьшаемом, и~в~вычитаемом. При выписывании результата учтём также, что
+и~в~уменьшаемом, и~в~вычитаемом. Учитывая, что 
+$\partial(\frac{\partial \eta_j}{\partial x_k}) / \partial{\dot{x}} = 0$, имеем:
 	\[
 	\frac{\partial\dot\eta_j}{\partial\dot x_i}
-		=\frac{\partial\sum_k\frac{\partial\eta_j}{x_k}\dot x_k}{\partial{\dot x_j}}
-		 =\sum_k\frac{\partial\eta_j}{\partial x_k}\frac{\partial\dot x_k}{\dot x_j}
-		 =\frac{\partial \eta_j}{\partial x_j}.
+		=\frac{\partial(\sum_k\frac{\partial\eta_j}{\partial x_k}\dot x_k)}{\partial{\dot x_j}}
+		=\sum_k\frac{\partial\eta_j}{\partial x_k}\frac{\partial\dot x_k}{\partial\dot x_j}
+		=\frac{\partial \eta_j}{\partial x_j}.
 	\]
 	
 Остаётся выражение следующего вида:
