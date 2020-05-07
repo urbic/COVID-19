@@ -86,21 +86,21 @@
 
 Осталось показать, что \textit{скобка} не выводит за пределы векторного пространства:
 	\[
-	&\vv=\sum\limits_{i=1}^{n} \xi_i \partial_{x_i},
+	&\vv=\sum\limits_{i=1}^n\xi_i\partial_{x_i},
 	\quad
-	\ww=\sum\limits_{i=1}^{n} \eta_i \partial_{x_i},\\
-	&\vv \circ \ww (f) = \vv(\ww(f))
-		=\sum\limits_{i=1}^{n} \xi_i \partial_{x_i}(\sum\limits_{j=1}^{n} \eta_i \frac{\partial{f}}{\partial{x_i}})
-		=\sum\limits_{i=1}^{n} \xi_i \left[ 
-		\sum\limits_{j=1}^{n} \left(
-		\frac{\partial{\eta_i}}{\partial{x_i}}
-		\frac{\partial{f}}{\partial{x_j}} + 
-		\frac{\partial^2{f}}{\partial{x_i}\partial{x_j}}
+	\ww=\sum\limits_{i=1}^n\eta_i\partial_{x_i},\\
+	&\vv\circ\ww(f)=\vv(\ww(f))
+		=\sum_{i=1}^n\xi_i\partial_{x_i}\left(\sum_{j=1}^n\eta_j\frac{\partial f}{\partial x_j}\right)
+		=\sum_{i=1}^n\xi_i\left[
+		\sum_{j=1}^n\left(
+		\frac{\partial\eta_j}{\partial x_i}
+		\frac{\partial f}{\partial x_j}
+		+\frac{\partial^2{f}}{\partial x_i\partial x_j}
 		\right)
 		\right]={}\\
 	&\qquad
-		=\sum\limits_{(i, j)}\frac{\partial^2{f}}{\partial{x_i}\partial{x_j}}
-		+\sum\limits_{j=1}^n\frac{\partial{f}}{\partial{x_j}} \sum\limits_{i=1}^{n} \xi_i \frac{\partial\eta_j}{\partial{x_i}}.
+		=\sum_{(i,j)}\frac{\partial^2 f}{\partial{x_i}\partial{x_j}}
+		+\sum_{j=1}^n\frac{\partial f}{\partial{x_j}}\sum_{i=1}^n\xi_i\frac{\partial\eta_j}{\partial x_i}.
 	\]
 	
 Аналогичным образом получаем, что
