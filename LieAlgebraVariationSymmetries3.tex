@@ -59,162 +59,164 @@
 
 \maketitle
 
-Пусть $\vv, \ww$\ --- векторные поля на $M$. \textit{Скобка} $[\vv, \ww] = \vv
-\circ \ww - \ww \circ \vv$. Для начала, покажем, что векторное пространство
-векторных полей на $M$ с операцией \textit{скобка} является алгеброй Ли.
+Пусть $\vv, \ww$~— векторные поля на $M$. \textit{Скобка}
+$[\vv,\ww]=\vv\circ\ww-\ww\circ\vv$. Для начала, покажем, что векторное
+пространство векторных полей на $M$ с~операцией \textit{скобка} является
+алгеброй Ли.
 	
 Свойства $(1)$ и $(2)$ проверются тривиально, исходя из определения скобки в нашем случае:
 	\[
-	&-[\vv, \ww] = - \vv \circ \ww + \ww \circ \vv = [\ww, \vv],\\
-	&[\vv,[\uu, \ww]] + [\uu, [\ww, \vv]] + [\ww, [\vv, \uu]] ={}\\
+	&-[\vv, \ww]=-\vv\circ\ww+\ww\circ\vv=[\ww,\vv],\\
+	&[\vv,[\uu,\ww]]+[\uu,[\ww,\vv]]+[\ww,[\vv,\uu]] ={}\\
 	&\qquad
-		=\vv\circ\uu\circ\ww - \vv\circ\ww\circ\uu - \uu\circ\ww\circ\vv + \ww\circ\uu\circ\vv+{}\\
+		=\vv\circ\uu\circ\ww-\vv\circ\ww\circ\uu-\uu\circ\ww\circ\vv+\ww\circ\uu\circ\vv+{}\\
 	&\qquad
-		+\uu\circ\ww\circ\vv - \uu\circ\vv\circ\ww - \ww\circ\vv\circ\uu + \vv\circ\ww\circ\uu+{}\\
+		+\uu\circ\ww\circ\vv-\uu\circ\vv\circ\ww-\ww\circ\vv\circ\uu+\vv\circ\ww\circ\uu+{}\\
 	&\qquad
-		+\ww\circ\vv\circ\uu - \ww\circ\uu\circ\vv - \vv\circ\uu\circ\ww + \uu\circ\vv\circ\ww=0.
+		+\ww\circ\vv\circ\uu-\ww\circ\uu\circ\vv-\vv\circ\uu\circ\ww+\uu\circ\vv\circ\ww=0.
 	\]
 
 Осталось показать, что \textit{скобка} не выводит за пределы векторного пространства:
 	\[
-	&\vv=\sum\limits_{i=1}^n\xi_i\partial_{x_i},
+	&\vv=\sum_{i=1}^n\xi_i\partial_{x_i},
 	\quad
-	\ww=\sum\limits_{i=1}^n\eta_i\partial_{x_i},\\
+	\ww=\sum_{i=1}^n\eta_i\partial_{x_i},\\
 	&\vv\circ\ww(f)=\vv(\ww(f))
 		=\sum_{i=1}^n\xi_i\partial_{x_i}\left(\sum_{j=1}^n\eta_j\frac{\partial f}{\partial x_j}\right)
 		=\sum_{i=1}^n\xi_i\left[
 		\sum_{j=1}^n\left(
 		\frac{\partial\eta_j}{\partial x_i}
 		\frac{\partial f}{\partial x_j}
-		+\frac{\partial^2{f}}{\partial x_i\partial x_j}
+		+\eta_j\frac{\partial^2f}{\partial x_i\partial x_j}
 		\right)
 		\right]={}\\
 	&\qquad
-		=\sum_{(i,j)}\frac{\partial^2 f}{\partial{x_i}\partial{x_j}}
+		=\sum_{(i,j)}\xi_i\eta_j\frac{\partial^2 f}{\partial{x_i}\partial{x_j}}
 		+\sum_{j=1}^n\frac{\partial f}{\partial{x_j}}\sum_{i=1}^n\xi_i\frac{\partial\eta_j}{\partial x_i}.
 	\]
 	
 Аналогичным образом получаем, что
 	\[
-	\ww \circ \vv (f)=
-		\sum\limits_{(i, j)} \frac{\partial^2{f}}{\partial{x_i}\partial{x_j}} +
-		\sum\limits_{j=1}^{n} \frac{\partial{f}}{\partial{x_j}} \sum\limits_{i=1}^{n} \eta_i \frac{\partial\xi_j}{\partial{x_i}}.
+	\ww\circ\vv(f)
+		=\sum_{(i,j)}\xi_i\eta_j\frac{\partial^2{f}}{\partial{x_i}\partial{x_j}}
+		+\sum_{j=1}^n\frac{\partial{f}}{\partial{x_j}}\sum_{i=1}^n\eta_i\frac{\partial\xi_j}{\partial x_i}.
 	\]
 	
-Наконец, находя $[\vv, \ww](f)$, имеем
+Наконец, находя $[\vv,\ww](f)$, имеем
 	\[
-		[\vv, \ww](f) = (\vv \circ \ww - \ww \circ \vv)|_f =
-		\sum\limits_{j=1}^{n} \frac{\partial{f}}{\partial{x_j}} \left(
-		\sum\limits_{i=1}^{n} \xi_i \frac{\partial\eta_j}{\partial{x_i}} -
-		\sum\limits_{i=1}^{n} \eta_i \frac{\partial\xi_j}{\partial{x_i}}
-		\right) = 
-		\sum\limits_{j=1}^{n} \partial_{x_j}(f) \zeta_j = \uu(f)
+	[\vv,\ww](f)=(\vv\circ\ww-\ww\circ\vv)|_f
+		=\sum_{j=1}^n\frac{\partial f}{\partial x_j}\left(
+		\sum_{i=1}^n\xi_i\frac{\partial\eta_j}{\partial{x_i}}
+		-\sum_{i=1}^n\eta_i\frac{\partial\xi_j}{\partial{x_i}}
+		\right)
+		=\sum_{j=1}^n\partial_{x_j}(f)\zeta_j=\uu(f).
 	\]
 
 Теперь необходимо доказать, что скобка также оставляет на месте подпространство
-необобщённых вариационных симметрий. Покажем, что $\forall\ \vv, \ww,$
+необобщённых вариационных симметрий. Покажем, что $\forall\;\vv,\ww$,
 являющихся необобщёнными вариационными симметриями лагранжевой задачи,
-$\pr[\vv, \ww](L) = 0$.
+$\pr[\vv,\ww](L)=0$.
 % 	\frac{\partial{}}{\partial{}}
 	\[
-	&\pr\vv(L) = \sum_i \xi_i \frac{\partial{L}}{\partial{x_i}} + \sum_i \dot\xi_i \frac{\partial{L}}{\partial{\dot x_i}},\\
-	&\pr\ww(L) = \sum_i \eta_i \frac{\partial{L}}{\partial{x_i}} + \sum_i \dot\eta_i \frac{\partial{L}}{\partial{\dot x_i}},\\
-	&\pr\uu(L) = \sum_i \zeta_i \frac{\partial{L}}{\partial{x_i}}+\sum_i \dot\zeta_i \frac{\partial{L}}{\partial{\dot x_i}},\\
-	&\zeta_j = \sum\limits_{i=1}^{n} \left(
-		\xi_i \frac{\partial\eta_j}{\partial{x_i}} -
-		\eta_i \frac{\partial\xi_j}{\partial{x_i}}
+	&\pr\vv(L)=\sum_i\xi_i\frac{\partial{L}}{\partial{x_i}}+\sum_i\dot\xi_i\frac{\partial L}{\partial\dot x_i},\\
+	&\pr\ww(L)=\sum_i\eta_i\frac{\partial{L}}{\partial{x_i}}+\sum_i\dot\eta_i\frac{\partial L}{\partial\dot x_i},\\
+	&\pr\uu(L)=\sum_i\zeta_i\frac{\partial{L}}{\partial{x_i}}+\sum_i\dot\zeta_i\frac{\partial L}{\partial\dot x_i},\\
+	&\zeta_j=\sum_{i=1}^n\left(
+		\xi_i\frac{\partial\eta_j}{\partial x_i}
+		-\eta_i\frac{\partial\xi_j}{\partial x_i}
 	\right),
 	\quad
-	\dot\zeta_j = \sum\limits_{i=1}^{n} \left(
-		\xi_i\left(\frac{\partial\eta_j}{\partial{x_i}}\right)\dot{\Bigr.} +
+	\dot\zeta_j=\sum_{i=1}^n\left(
+		\xi_i\left(\frac{\partial\eta_j}{\partial x_i}\right)\dot{\Bigr.}
+			+
 		%\textcolor[gray]{0.6}{
-			\dot\xi_i \frac{\partial\eta_j}{\partial{x_i}}
+			\dot\xi_i\frac{\partial\eta_j}{\partial x_i}
 		%}
-		-\eta_i\left(\frac{\partial\xi_j}{\partial{x_i}}\right)\dot{\Bigr.} -
+		-\eta_i\left(\frac{\partial\xi_j}{\partial x_i}\right)\dot{\Bigr.}
+			-
 		%\textcolor[gray]{0.6}{
-			\dot\eta_i \frac{\partial\xi_j}{\partial{x_i}}
+			\dot\eta_i\frac{\partial\xi_j}{\partial x_i}
 		%}
 	\right).
 	\]
 	
-Было бы приятно иметь следующий факт: $\pr\uu = [\pr\vv, \pr\ww]$, ведь тогда
+Было бы приятно иметь следующий факт: $\pr\uu=[\pr\vv,\pr\ww]$, ведь тогда
 	\[
-	\pr\uu(L) = \pr \vv (\pr \ww(L)) - \pr \ww (\pr \vv(L)) = 0.
+	\pr\uu(L)=\pr\vv(\pr\ww(L))-\pr\ww(\pr\vv(L))=0.
 	\]
 	
 Докажем факт, описанный выше, тривиальной проверкой:
 	\[
-	&\pr \vv \circ \pr \ww =\\
+	&\pr\vv\circ\pr\ww={}\\
 	&\qquad
 		=\sum_i \xi_i \partial_{x_i}\left(
 		\sum_j \eta_j \partial_{x_j} +
 		\sum_j \dot \eta_j\partial_{\dot x_j}
 		\right)+
 	\sum_i \dot\xi_i \partial_{\dot x_i}\left(
-		\sum_j\eta_j \partial_{x_j} +
-		\sum_j\dot\eta_j\partial_{\dot x_j}
+		\sum_j\eta_j \partial_{x_j}
+		+\sum_j\dot\eta_j\partial_{\dot x_j}
 		\right)={}\\
 	&\qquad
 		=\sum_i\xi_i \left(
-		\sum_j\frac{\partial{\eta_j}}{\partial{x_i}} \partial_{x_j} + 
-		\sum_j\eta_j \partial_{x_j x_i} +
-		\sum_j\frac{\partial{\dot\eta_j}}{\partial{x_i}} \partial_{\dot x_j} + 
-		\sum_j\dot\eta_j\partial_{\dot x_jx_i}
+		\sum_j\frac{\partial\eta_j}{\partial x_i}\partial_{x_j}
+		+\sum_j\eta_j \partial_{x_jx_i}
+		+\sum_j\frac{\partial\dot\eta_j}{\partial x_i}\partial_{\dot x_j}
+		+\sum_j\dot\eta_j\partial_{\dot x_jx_i}
 		\right)+{}\\
 	&\qquad
-		+\sum_i\dot\xi_i \left(
-		\sum_j\eta_j \partial_{x_j \dot x_i} +
-		\sum_j\frac{\partial\dot\eta_j}{\partial\dot x_i}\partial_{\dot x_j}+
-		\sum_j\dot\eta_j\partial_{\dot x_j\dot x_i}
+		+\sum_i\dot\xi_i\left(
+		\sum_j\eta_j \partial_{x_j\dot x_i}
+		+\sum_j\frac{\partial\dot\eta_j}{\partial\dot x_i}\partial_{\dot x_j}
+		+\sum_j\dot\eta_j\partial_{\dot x_j\dot x_i}
 		\right).
 	\]
 	
 В последнем слагаемом мы не выписали часть, содержащую
-$\slashfrac{\partial{\eta_j}}{\partial{\dot x_i}}$, поскольку $\eta_j$ не зависят от
-$\dot x$. При вычислении разности $\pr \vv \circ \pr \ww - \pr \ww \circ \pr
-\vv$ все суммы вида $\sum_{(i, j)}$ уйдут ввиду того, что будут содержаться и в
-уменьшаемом, и в вычитаемом. При выписывании результата учтём также, что
+$\slashfrac{\partial{\eta_j}}{\partial\dot x_i}$, поскольку $\eta_j$ не зависят
+от $\dot x$. При вычислении разности $\pr\vv\circ\pr\ww-\pr\ww\circ\pr\vv$ все
+суммы вида $\sum_{(i,j)}$ уйдут ввиду того, что будут содержаться
+и~в~уменьшаемом, и~в~вычитаемом. При выписывании результата учтём также, что
 	\[
-	\frac{\partial\dot\eta_j}{\partial\dot x_i}=  
-  	\frac{\partial\sum_k\frac{\partial\eta_j}{x_k}\dot x_k}
-  	 	 {\partial{\dot x_j}}=
-  	\sum_k \frac{\partial\eta_j}{\partial x_k} \frac{\partial\dot x_k}{\dot x_j}=
-  	\frac{\partial \eta_j}{\partial x_j}.
+	\frac{\partial\dot\eta_j}{\partial\dot x_i}
+		=\frac{\partial\sum_k\frac{\partial\eta_j}{x_k}\dot x_k}{\partial{\dot x_j}}
+		 =\sum_k\frac{\partial\eta_j}{\partial x_k}\frac{\partial\dot x_k}{\dot x_j}
+		 =\frac{\partial \eta_j}{\partial x_j}.
 	\]
 	
 Остаётся выражение следующего вида:
 	\[
-	&[\pr\vv, \pr\ww] =
-	\sum_i \xi_i \left(
-		\sum_j \frac{\partial{\eta_j}}{\partial{x_i}} \partial_{x_j} + 
-		\sum_j \frac{\partial{\dot\eta_j}}{\partial{x_i}} \partial_{\dot x_j}
-		\right) +
-	\sum_i \dot\xi_i\left(
-		\sum_j \frac{\partial\dot\eta_j}{\partial{\dot x_i}}\partial_{\dot x_j}
-		\right) -{}\\
+	&[\pr\vv, \pr\ww]
+		=\sum_i\xi_i\left(
+		\sum_j\frac{\partial\eta_j}{\partial x_i}\partial_{x_j}
+		+\sum_j\frac{\partial{\dot\eta_j}}{\partial{x_i}} \partial_{\dot x_j}
+		\right)
+		+\sum_i\dot\xi_i\left(
+		\sum_j\frac{\partial\dot\eta_j}{\partial{\dot x_i}}\partial_{\dot x_j}
+		\right)-{}\\
 	&\qquad
-		-\sum_i \eta_i \left(
-		\sum_j \frac{\partial{\xi_j}}{\partial{x_i}} \partial_{x_j} + 
-		\sum_j \frac{\partial{\dot\xi_j}}{\partial{x_i}} \partial_{\dot x_j}
-		\right) -
-		\sum_i\dot\eta_i\left(
-		\sum_j \frac{\partial\dot \xi_j}{\partial{\dot x_i}} \partial_{\dot x_j}
+		-\sum_i\eta_i\left(
+		\sum_j\frac{\partial\xi_j}{\partial x_i}\partial_{x_j}
+		+\sum_j\frac{\partial{\dot\xi_j}}{\partial{x_i}}\partial_{\dot x_j}
+		\right)
+		-\sum_i\dot\eta_i\left(
+		\sum_j\frac{\partial\dot\xi_j}{\partial\dot x_i}\partial_{\dot x_j}
 		\right)={}\\
 	&\qquad
-		=\sum_j \partial_{x_j} \sum\limits_{i=1}^{n} \left(
-		\xi_i \frac{\partial\eta_j}{\partial{x_i}} -
-		\eta_i \frac{\partial\xi_j}{\partial{x_i}}
+		=\sum_j\partial_{x_j}\sum_{i=1}^n\left(
+		\xi_i\frac{\partial\eta_j}{\partial x_i}
+		-\eta_i \frac{\partial\xi_j}{\partial x_i}
 		\right)+{}\\
 	&\qquad
-		+\sum_j \partial_{\dot x_j} \sum\limits_{i=1}^{n} \left(
-		\xi_i\left(\frac{\partial\eta_j}{\partial{x_i}}\right)\dot{\Bigr.}+
-		\dot\xi_i \frac{\partial\eta_j}{\partial{x_i}} -
-		\eta_i\left(\frac{\partial\xi_j}{\partial{x_i}}\right)\dot{\Bigr.}-
-		\dot\eta_i \frac{\partial\xi_j}{\partial{x_i}}
+		+\sum_j\partial_{\dot x_j}\sum_{i=1}^n\left(
+		\xi_i\left(\frac{\partial\eta_j}{\partial x_i}\right)\dot{\Bigr.}
+		+\dot\xi_i\frac{\partial\eta_j}{\partial x_i}
+		-\eta_i\left(\frac{\partial\xi_j}{\partial x_i}\right)\dot{\Bigr.}
+		-\dot\eta_i\frac{\partial\xi_j}{\partial x_i}
 		\right).
 	\]
 	
-Сравнивая полученное с $\pr\uu$ делаем вывод, что выражения равны, тем самым
+Сравнивая полученное с~$\pr\uu$ делаем вывод, что выражения равны, тем самым
 завершая доказательство.
 \end{document}
 
