@@ -7,6 +7,7 @@ PDF_FILES=Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForce
 	LieAlgebraVariationSymmetries2.pdf \
 	LieAlgebraVariationSymmetries3.pdf \
 	ChaosAndDevastation.pdf \
+	LieAlgebras2D.pdf \
 	HappySummer.pdf
 
 TO_PUBLISH=index.xhtml $(PDF_FILES) logo-skull.svg logo-biohazard.svg Legendre.png

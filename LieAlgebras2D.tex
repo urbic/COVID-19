@@ -1,0 +1,222 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{luatex85}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage[fleqn,reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage[math-style=ISO,bold-style=upright,partial=italic]{unicode-math}
+\usepackage{microtype}
+\usepackage[width=16cm,height=24cm]{geometry}
+\usepackage[russian]{hyperref}
+\usepackage{mathtools}
+
+\setmainlanguage{russian}
+
+\setmainfont{Cambria}
+\setsansfont{Calibri}
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmathfont{Cambria Math}[sans-style=literal]
+\setmathfont{XITS Math}[range={\mathscr}]
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{theorem*}{Теорема}
+\makeatletter
+
+\allowdisplaybreaks[4]
+
+\def\[#1\]{\begin{align*}#1\end{align*}}
+\newcommand\eqtag[1]{\refstepcounter{equation}\tag{\theequation}\label{#1}}
+
+%\newcommand\slashfrac[2]{{#1\fracslash#2}}
+\newcommand\slashfrac[2]{{#1/#2}}
+
+
+\begin{document}
+	
+
+\title{Классификация двумерных алгебр Ли}
+\author{С.~Осинский}
+\date{12.05.2020}
+\maketitle
+
+Пусть $\mathfrak g$~— произвольная комплексная(или вещественная) двумерная
+алгебра Ли. Попытаемся определить общий вид как её самой, так и соответствующей
+односвязной группы Ли. Для этого, для начала выберем в ней некоторый базис
+$\{\mathbf{v,w}\}$. Тогда для произвольных элементов алгебры $\mathbf X$
+и~$\mathbf Y$, используя свойства скобки, имеем:
+	\[
+	\mathbf X = a\mathbf v + b\mathbf w,
+	\quad
+	\mathbf Y=c\mathbf v+b\mathbf w,
+	\quad
+	a,b,c,d\in\BbbC.
+	\]
+Рассмотрим произвольную скобку:
+	\[
+	&[\mathbf X,\mathbf Y]=[a\mathbf v+b\mathbf w,c\mathbf v+d\mathbf w]
+		=a[\mathbf v,c\mathbf v+d\mathbf w]+b[\mathbf w,c\mathbf v+d\mathbf w]={}\\
+	&\qquad
+		=ac[\mathbf v,\mathbf v]+ad[\mathbf v,\mathbf w]
+		+bc[\mathbf w,\mathbf v]+bd[\mathbf w,\mathbf w]
+		=(ad-bc)[\mathbf v,\mathbf w].
+	\]
+Получаем, что любая скобка пропорциональна скобке базисных элементов. Если
+$[\mathbf v,\mathbf w]=\symbf0$, то нулю равна любая скобка и получается, что
+наша алгебра абелева. Соответствующей односвязной группой Ли очевидно является
+$\BbbC^2$ (или $\BbbR^2$). Пусть теперь $[\mathbf v,\mathbf w]\ne\mathbf0$.
+Обозначим $\mathbf w_1=[\mathbf v,\mathbf w]$ Имеем:
+	\[
+	\forall\mathbf x,\mathbf y\in\mathfrak{g}:[\mathbf x,\mathbf y]
+		=\lambda\mathbf w_1.
+	\]
+В~частности, для любого $\mathbf v_1$ такого, что $\mathbf v_1$ и $\mathbf w_1$
+линейно независимы получаем:
+	\[
+	[\mathbf v_1,\mathbf w_1]=\lambda_0\mathbf w_1.
+	\]
+Заменяя $\mathbf v_1\to\frac1{\lambda_0}\mathbf v_1$ получаем базис $\{\mathbf
+v_1,\mathbf w_1\}$ в~$\mathfrak g$, для которого выполняется $[\mathbf
+v_1,\mathbf w_1]=\mathbf w_1$. Это выражение полностью определяет алгебру Ли,
+и~мы получаем общий вид с~точностью до изоморфизма двумерной неабелевой алгебры
+Ли. Теперь хочется получить его матричное представление. Рассмотрим
+отображение:
+	\[
+	\phi\colon\mathfrak g\to\mathfrak{gl}(2,\BbbC),
+	\quad
+	\phi\colon a\mathbf v_1+b\mathbf w_1\mapsto
+		\begin{pmatrix}
+			a&b\\
+			0&0
+		\end{pmatrix}.
+	\]
+Покажем, что это отображение является изоморфизмом алгебр Ли. Для начала
+проверим, что оно является гомоморфизмом алгебр Ли:
+	\[
+	\phi([a\mathbf v_1+b\mathbf w_1,c\mathbf v_1+d\mathbf w_1])=\phi((ad-bc)\mathbf w_1)
+		=\begin{pmatrix}
+			0&ad-bc\\
+			0&0
+		\end{pmatrix}.
+	\]
+В~то~же время:
+	\[
+	[\phi(a\mathbf v_1+b\mathbf w_1),\phi(c\mathbf v_1+d\mathbf w_1)]
+		=\begin{pmatrix}
+			a&b\\
+			0&0
+		\end{pmatrix}
+		\begin{pmatrix}
+			c&d\\
+			0&0
+		\end{pmatrix}
+		-\begin{pmatrix}
+			c&d\\
+			0&0
+		\end{pmatrix}
+		\begin{pmatrix}
+			a&b\\
+			0&0
+		\end{pmatrix}
+		=\begin{pmatrix}
+			0&ad-bc\\
+			0&0
+		\end{pmatrix}.
+	\]
+Кроме того, данное отображение, очевидно, инъективно (равенство элементов
+матриц влечет равенство коэффициентов и соответственно равенство элементов
+алгебры). Получили, что $\mathfrak g\simeq\phi(\mathfrak g)$, где:
+	\[
+	\phi(\mathfrak g)=\left\{
+		\begin{psmallmatrix}
+			a&b\\
+			0&0
+		\end{psmallmatrix}
+		\in\mathfrak{gl}(2,\BbbC)\colon a,b\in\BbbC
+		\right\}.
+	\]
+Далее нам потребуются некоторые дополнительные сведения из
+книги~\cite{bib:vinberg}).
+
+\begin{theorem}
+Экспоненциальное отображение $\exp\colon\mathfrak g\to G$ диффеоморфно
+отображает некоторую окрестность нуля в~алгебре $\mathfrak g$ в~некоторую
+окрестность единицы группы $G$.
+\end{theorem}
+
+Таким образом, чтобы попасть в~группу Ли соответствующую нашей алгебре нам
+нужно применить экспоненциальное отображение, в~данном случае совпадающее
+с~классической матричной экспонентой (опять~же см.~\cite{bib:vinberg}).
+Вычислим матричную экспоненту, пусть
+$A=\begin{psmallmatrix}a&b\\0&0\end{psmallmatrix}$, найдем общий вид степени:
+	\[
+	A^n=\begin{pmatrix}
+		a^n&a^{n-1}b\\
+		0&0
+		\end{pmatrix}.
+	\]
+Тогда имеем: 
+	\[
+	\exp(A)=\begin{pmatrix}
+		e^a&\frac{(e^{a}-1)b}{a}\\
+		0&1
+	\end{pmatrix}.
+	\]
+Соответственно, попадая в группу Ли, мы получаем:
+	\[
+	G_0=\left\{
+		\begin{psmallmatrix}
+			a&b\\
+			0&1
+		\end{psmallmatrix}
+		\colon a\ne0
+		\right\}
+		\subset GL_2(\BbbC).
+	\]
+Это одномерная аффинная группа. Мы хотим найти односвязную группу Ли, алгеброй
+которой является двумерная неабелева алгебра Ли, для этого нам нужно найти
+односвязное накрытие данной группы (их алгебры Ли совпадают,
+см.~\cite{bib:vinberg}). Топологически эта группа устроена как
+$\BbbC\times\BbbC^*$, для нахождения односвязного накрытия запишем ее
+произвольный элемент в виде:
+	\[
+	\begin{pmatrix}
+		e^t&s\\
+		0&1
+	\end{pmatrix}.
+	\]
+Произведение двух таких матриц имеет вид:
+	\[
+	\begin{pmatrix}
+		e^t&s\\
+		0&1
+	\end{pmatrix}
+	\begin{pmatrix}
+		e^{t_1}&s_1\\
+		0&1
+	\end{pmatrix}
+	=\begin{pmatrix}
+		e^{t+t_1}&s+e^{t}s_1\\
+		0&1
+	\end{pmatrix}.
+	\]
+Поэтому можно рассматривать универсальное накрытие $G$ как группу пар
+$(t,s)\in\BbbC\times\BbbC$ c~групповым законом
+$(t,s)\cdot(t_1,s_1)=(t+t_1,s+e^ts_1)$. Накрывающий гомоморфизм
+$f\colon\BbbC\times\BbbC\to\BbbC^*\times\BbbC$ по сути устроен так:
+	\[
+	(t,s)\mapsto(e^t,s),
+	\]
+из чего вытекает, что $\ker f=\{(2\pi in,0)\}\simeq\BbbZ$, $G_0\simeq
+G/\ker{f}$ (cм.~\cite{bib:vinberg}). В~вещественном случае, пойдя по тому~же
+пути, мы сразу после экспоненцирования попадаем в односвязную группу Ли, в~чем
+легко убедиться, заметив, что соответствующее ядро накрывающего гомоморфизма
+нулевое. Стоит также заметить, что все связные группы Ли с~такой алгеброй будут
+факторами односвязной группы Ли по ее нормальным дискретным подгруппам. Таким
+образом, в~вещественном случае можно довольно легко классифицировать
+с~точностью до изоморфизма все связные двумерные группы Ли.
+
+\begin{thebibliography}{9}
+\bibitem{bib:vinberg} Э.~Б.~Винберг, А.~Л.~Онищик, Основы теории групп Ли.
+\end{thebibliography}
+\end{document}
