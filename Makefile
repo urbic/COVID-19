@@ -8,6 +8,7 @@ PDF_FILES=Routh.pdf EulerKernel.pdf Oscillations.pdf Hamilton.pdf IntrinsicForce
 	LieAlgebraVariationSymmetries3.pdf \
 	ChaosAndDevastation.pdf \
 	LieAlgebras2D.pdf \
+	NonEvolutionNoether.pdf \
 	HappySummer.pdf
 
 TO_PUBLISH=index.xhtml $(PDF_FILES) logo-skull.svg logo-biohazard.svg Legendre.png
