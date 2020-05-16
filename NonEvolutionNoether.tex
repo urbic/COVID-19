@@ -1,0 +1,158 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{luatex85}
+\usepackage[babelshorthands]{polyglossia}
+\usepackage[fleqn,reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage[math-style=ISO,bold-style=upright,partial=italic]{unicode-math}
+\usepackage{microtype}
+\usepackage[width=16cm,height=24cm]{geometry}
+\usepackage[russian]{hyperref}
+
+\setmainlanguage{russian}
+
+\setmainfont{Cambria}
+\setsansfont{Calibri}
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmathfont{Cambria Math}[sans-style=literal]
+\setmathfont{XITS Math}[range={\mathscr}]
+
+\makeatletter
+
+\allowdisplaybreaks[4]
+
+\def\[#1\]{\begin{align*}#1\end{align*}}
+\newcommand\eqtag[1]{\refstepcounter{equation}\tag{\theequation}\label{#1}}
+
+%\newcommand\slashfrac[2]{{#1\fracslash#2}}
+\newcommand\slashfrac[2]{{#1/#2}}
+
+\newcommand\pr{\operatorname{\textbf{\textup{pr}}}}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{theorem*}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{example}{Пример}
+%\newtheorem{proof}{Доказательство}
+
+\newcommand\metasetup{\hypersetup{
+	pdftitle=\@title,
+	pdfauthor=\@author,
+	linkbordercolor={0 .5 .25},
+	}}
+
+\setlength\overfullrule{5pt}
+
+\makeatother
+\usepackage{enumerate}
+%\usepackage[amsmath,amsthm,thmmarks]{ntheorem}
+%\usepackage{ulem}
+
+\begin{document}
+
+\hyphenation{Ла-гран-жа ла-гран-же-вой}
+
+\title{Приключения Теоремы Нётер в дополнительных задачах}
+\author{М.~С.~Терехов}
+
+%\metasetup
+\maketitle
+
+\section{Небольшое обобщение теоремы Нётер}
+
+
+Рассмотрим обобщённые векторные поля вида
+	$\textbf{v}=\sum_{i=1}^n\xi_i\partial_{x_i}+\tau\partial_t$, где
+функции $\xi_i$ зависят от $(t,x,\dot x)$.
+Тогда, как уже было показано в работе~\cite{bib:2}
+	\[
+	\operatorname{\textbf{pr}}^{(1)}\textbf{v}
+		=\sum_{i=1}^n\xi_i \partial_{x_i}+\tau\partial_t+\sum_{i=1}^n (\dot\xi_i-\dot\tau\dot x_i) \partial_{\dot x_i},
+	\eqtag{eq:prolongation-v}
+	\]
+Назовём его \emph{полем обобщённой симметрии\/} лагранжевой задачи
+$L[x]=\int L(t,x,\dot x)\,dt$, если найдётся такая дифференциальная
+функция $A$, что
+	\[
+	\pr^{(1)}\textbf{v}(\textit{L})=\dot A-L\dot\tau.
+	\eqtag{eq:symmetry-cond}
+	\]
+Под \emph{дифференциальной функцией\/} мы понимаем функцию независимой
+переменной~$t$, зависимых $x_i$ и~производных вплоть до некоторого порядка.
+
+В~оправдание названия полей обобщённых симметрий мы сошлёмся на формулу (5.53)
+стр.~408 из книжки~\cite{bib:3}.
+
+
+%В оправдание названия полей обобщённых симметрий заметим, что в~своём
+%инфинитезимальном действии такие поля прибавляют к~лагранжиану калибровочное
+%слагаемое $\varepsilon\dot A$, что означает добавление к~функционалу~$\textit{L}$
+%постоянного функционала $\varepsilon\int\dot A\,dt$ (добавка зависит лишь от
+%значений функций $x(t)$ на концах отрезка интегрирования, и, таким образом, не
+%меняется при варьировании). Это, конечно, никак не сказывается на стационарных
+%точках $\textit{L}$, следовательно, групповые преобразования переводят
+%решения~$x(t)$ уравнений Эйлера~— Лагранжа в~решения.
+
+\begin{theorem*}[A.~E.~Noether ver2.0]
+Пусть $\textbf{v}=\sum_{i=1}^n\xi_i\partial_{x_i}+\tau\partial_t$~— поле обобщённой симметрии
+лагранжевой задачи~$\textit{L}$ и
+	\[
+	I(t,x,\dot x)=\sum_{i=1}^n(\xi_i - \tau \dot x_i)\frac{\partial L}{\partial\dot x_i} - A +L\tau.
+	\]
+Тогда
+	\[
+	\dot I=-\sum_{i=1}^n(\xi_i-\tau\dot x_i)\mbfsansE_i(L).
+	\eqtag{eq:dotI}
+	\]
+\end{theorem*}
+
+\begin{proof}
+Прежде чем приступить к доказательству, заметим, что эта теорема при $\tau=0$
+даёт нам теорему из методички~\cite{bib:1}, тем самым обобщает её. Итак, прямые
+вычисления показывают нам, что 
+	\[
+	\dot I=\dot\tau L+\tau\dot L+\sum_{i=1}^n(\dot\xi_i-\dot\tau\dot x_i
+		-\tau\ddot x_i)\frac{\partial L}{\partial\dot x_i}
+		-\dot A+\sum_{i=1}^n(\xi_i-\tau\dot x_i)\frac{d}{dt}\frac{\partial L}{\partial\dot x_i}.
+	\]
+Теперь распишем \eqref{eq:dotI}, применив выражение для $\mbfsansE_i(L)$ и
+применим~\eqref{eq:prolongation-v}
+	\[
+	&\sum_{i=1}^n(\xi_i-\tau\dot x_i)\left(\frac{d}{dt}\frac{\partial L}{\partial\dot x_i}
+	 	-\frac{\partial L}{\partial x_i}\right)={}\\
+	&\qquad
+		=\sum_{i=1}^n(\xi_i-\tau\dot x_i)\left(\frac{d}{dt}\frac{\partial L}{\partial\dot x_i}\right)
+		+\sum_{i=1}^n\tau\dot x_i\frac{\partial L}{\partial x_i}
+		+\tau\frac{\partial L}{\partial t}+\sum_{i=1}^n(\dot \xi_i-\dot\tau\dot x_i)\frac{\partial L}{\partial\dot x_i}
+	 	+L\dot\tau-\dot B,
+	\]
+учитывая, что
+	\[
+	L=\sum_{i=1}^n(\frac{\partial L}{\partial\dot x_i})\dot x_i+\frac{\partial L}{\partial t},
+	\]
+а также
+	\[
+	\sum_{i=1}^n\ddot x_i\frac{d}{dt}\frac{\partial L}{\partial\dot x_i}
+		+\sum_{i=1}^n\dot x_i\frac{d}{dt}\frac{\partial L}{\partial {x_i}}
+		=\frac{d}{dt}\left(\sum_{i=1}^n\frac{\partial L}{\partial\dot x_i}\dot x_i\right),
+	\]
+приходим к~утверждению теоремы.
+
+
+\end{proof}
+
+Теорема Нётер устанавливает соответствие между обобщёнными симметриями
+вариационных задач и~законами сохранения (первыми интегралами) уравнений
+Эйлера~— Лагранжа. Из теоремы непосредственно вытекает, что $\dot
+I=0\bmod\mbfsansE(L)=0$, и, следовательно, $I$ является первым интегралом
+уравнений Эйлера~— Лагранжа.
+
+\begin{thebibliography}{0}
+\bibitem{bib:1} \url{http://mech.math.msu.su/~shvetz/coronavirus/Noether.pdf}.
+\bibitem{bib:2} \url{http://mech.math.msu.su/~shvetz/coronavirus/Prolongation.pdf}.
+\bibitem{bib:3} \url{http://alexandr4784.narod.ru/olwer/olw_gl5_3.pdf}.
+\end{thebibliography}
+
+\end{document}
