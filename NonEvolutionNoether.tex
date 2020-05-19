@@ -87,20 +87,10 @@ $L[x]=\int L(t,x,\dot x)\,dt$, если найдётся такая диффер
 В оправдание названия полей обобщённых симметрий мы (нестрого) заметим, что
 отдельно изменение времени приводит к увеличению лагранжиана на $\varepsilon
 \dot{\tau}L\,$ (забываем про $o(\varepsilon)$) и отдельно увеличение лагранжина
-происходит на $\varepsilon\dot A - L\dot{\tau}$, их совместное действие
+происходит на $\varepsilon(\dot A - L\dot{\tau})$, их совместное действие
 добавляет ещё что-то $o(\varepsilon)$, таким образом добавка к функционалу
 будет зависить лишь от значений $x(t)$ на концах отрезка, что не повлияет на
-стационарные точки.\footnote{В этом абзаце есть ошибки~\emph{— А.~Ш.}}
-
-
-%В оправдание названия полей обобщённых симметрий заметим, что в~своём
-%инфинитезимальном действии такие поля прибавляют к~лагранжиану калибровочное
-%слагаемое εA˙, что означает добавление к~функционалу~L
-%постоянного функционала ε∫A˙dt (добавка зависит лишь от
-%значений функций x(t) на концах отрезка интегрирования, и, таким образом, не
-%меняется при варьировании). Это, конечно, никак не сказывается на стационарных
-%точках L, следовательно, групповые преобразования переводят
-%решения~x(t) уравнений Эйлера~— Лагранжа в~решения.
+стационарные точки.
 
 \begin{theorem*}[A.~E.~Noether ver2.0]
 Пусть $\textbf{v}=\sum_{i=1}^n\xi_i\partial_{x_i}+\tau\partial_t$~— поле обобщённой симметрии
@@ -133,18 +123,13 @@ $L[x]=\int L(t,x,\dot x)\,dt$, если найдётся такая диффер
 		=\sum_{i=1}^n(\xi_i-\tau\dot x_i)\left(\frac{d}{dt}\frac{\partial L}{\partial\dot x_i}\right)
 		+\sum_{i=1}^n\tau\dot x_i\frac{\partial L}{\partial x_i}
 		+\tau\frac{\partial L}{\partial t}+\sum_{i=1}^n(\dot \xi_i-\dot\tau\dot x_i)\frac{\partial L}{\partial\dot x_i}
-	 	+L\dot\tau-\dot B,
+	 	+L\dot\tau-\dot A,
 	\]
-учитывая, что\footnote{Ошибка~\emph{— А.~Ш.}}
+учитывая, что
 	\[
-	\dot L=\sum_{i=1}^n\left(\frac{\partial L}{\partial\dot x_i}\right)\dot x_i
+	\dot L=\sum_{i=1}^n\ddot x_i\frac{\partial L}{\partial\dot x_i}
+		+\sum_{i=1}^n\dot x_i\frac{\partial L}{\partial {x_i}}
 		+\frac{\partial L}{\partial t},
-	\]
-а также
-	\[
-	\sum_{i=1}^n\ddot x_i\frac{d}{dt}\frac{\partial L}{\partial\dot x_i}
-		+\sum_{i=1}^n\dot x_i\frac{d}{dt}\frac{\partial L}{\partial {x_i}}
-		=\frac{d}{dt}\left(\sum_{i=1}^n\frac{\partial L}{\partial\dot x_i}\dot x_i\right),
 	\]
 приходим к~утверждению теоремы.
 
